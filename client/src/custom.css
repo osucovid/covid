@@ -1,0 +1,30 @@
+body {
+	background-color: #eeeeee !important;
+}
+
+@media (min-width: 992px) {
+	.navbar li {
+		margin-left: 1em !important;
+		margin-right: 1em !important;
+	}
+}
+
+.card-deck {
+	max-width: 90%;
+	margin: 0 auto;
+	float: none;
+}
+
+/*.navbar li a {
+	background-color: #A9A9A9;
+	color: #ffffff !important;
+}
+
+.navbar li a:hover {
+	background-color: #C0C0C0;
+	color: #ffffff !important;
+}*/
+
+.b-navbar {
+	background-color: #C0C0C0 !important;
+}
