@@ -2,8 +2,6 @@
   <div id="app">
     <navbar />
     <Main />
-    <!---<img alt="Vue logo" src="./assets/graph.svg">--->
-    <!---<img alt="Vue logo" src="./assets/logo.png">--->
     <PostComponent msg="Welcome to Your Vue.js App"/>
     <Footer />
   </div>
