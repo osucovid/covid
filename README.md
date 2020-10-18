@@ -18,6 +18,8 @@ Quick guide to for initial set up
 ---> after "cd client", type "npm install" before "npm run serve" if setting up for the first time
 12) build for production (pushes directly to github and github with deploy to heroku), within /client, run "npm run build"
 
+Remember to create a new branch and load your changes to it before submitting a pull request and merging to main.
+
 *current build is live at https://cryptic-harbor-17003.herokuapp.com/
 -you can add a post
 -delete a post by double clicking on it
