@@ -8,20 +8,31 @@ const router = express.Router();
 router.get('/', async (req, res) => {
     const posts = await loadPostsCollection();
     //send an array of posts in the db
-    
+
     //{query to find text that matches but leave it empty to recieve all as an array}
     res.send(await posts.find({}).toArray());
 });
 
 //add posts
 router.post('/', async (req, res) => {
-    const posts = await loadPostsCollection();
+    const posts = await loadLoginCollection();
+    const username = req.body.text.username;
+    const password = req.body.text.password;
+    posts.findOne({"username": username, "password": password}, function(err, user){
+      if(err){
+        console.log("User not found");
+      }
+      else{
+        console.log("User found!");
+      }
+    })
     await posts.insertOne({
-        text: req.body.text,
-        createdAt: new Date()
+      "username": req.body.text.username,
+      "password": req.body.text.password
     });
     res.status(201).send();
 });
+
 
 
 //delete posts
@@ -43,5 +54,16 @@ async function loadPostsCollection() {
     //get the posts collection to run methods on it like insert and delete etc
     return client.db('CovidCluster').collection('posts');
 }
+
+async function loadLoginCollection() {
+    const client = await mongodb.MongoClient.connect('mongodb+srv://capstonecovid:capstonecovid@covidcluster.w5yhl.mongodb.net/<dbname>?retryWrites=true&w=majority', {
+        useNewUrlParser: true
+    });
+
+    //get the posts collection to run methods on it like insert and delete etc
+    return client.db('CovidCluster').collection('login');
+}
+
+
 
 module.exports = router;
