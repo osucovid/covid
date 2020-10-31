@@ -14,8 +14,15 @@
 
       <!-- Right aligned nav items -->
       <b-navbar-nav class="ml-auto">
-        
 
+      <b-form inline>
+      <div class="create-post">
+        <input type="text" name="username" v-model="text.username" placeholder="Username">
+        <input type="text" name="password" v-model="text.password" placeholder="Password">
+        <button v-on:click="createPost">Post!</button>
+      </div>
+
+  </b-form>
         <b-nav-item-dropdown right>
           <!-- Using 'button-content' slot -->
           <template v-slot:button-content>
@@ -32,7 +39,24 @@
 </template>
 
 <script>
-  export default {
-    name: 'Navbar'
+import loginService from '../loginService'
+
+export default {
+  name: 'Navbar',
+  data() {
+    return {
+      posts: [],
+      error: '',
+      text: {
+        username: '',
+        password: ''
+      },
+    }
+  },
+  methods: {
+    async createPost() {
+        await loginService.insertPost(this.text);
+    }
   }
+}
 </script>
