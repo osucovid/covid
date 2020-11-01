@@ -15,24 +15,13 @@ router.get('/', async (req, res) => {
 
 //add posts
 router.post('/', async (req, res) => {
-    const posts = await loadLoginCollection();
-    const username = req.body.text.username;
-    const password = req.body.text.password;
-    posts.findOne({"username": username, "password": password}, function(err, user){
-      if(err){
-        console.log("User not found");
-      }
-      else{
-        console.log("User found!");
-      }
-    })
+    const posts = await loadPostsCollection();
     await posts.insertOne({
-      "username": req.body.text.username,
-      "password": req.body.text.password
+        text: req.body.text,
+        createdAt: new Date()
     });
     res.status(201).send();
 });
-
 
 
 //delete posts
@@ -54,16 +43,5 @@ async function loadPostsCollection() {
     //get the posts collection to run methods on it like insert and delete etc
     return client.db('CovidCluster').collection('posts');
 }
-
-async function loadLoginCollection() {
-    const client = await mongodb.MongoClient.connect('mongodb+srv://capstonecovid:capstonecovid@covidcluster.w5yhl.mongodb.net/<dbname>?retryWrites=true&w=majority', {
-        useNewUrlParser: true
-    });
-
-    //get the posts collection to run methods on it like insert and delete etc
-    return client.db('CovidCluster').collection('login');
-}
-
-
 
 module.exports = router;
