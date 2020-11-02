@@ -2,8 +2,11 @@
   <div id="app">
     <navbar />
     <Main />
-    <PostComponent msg="Welcome to Your Vue.js App"/>
+    <Guide />
+    <GeneralForm />
+    <PostComponent />
     <Footer />
+    
   </div>
 </template>
 
@@ -12,6 +15,8 @@ import Navbar from './components/Navbar.vue'
 import PostComponent from './components/PostComponent.vue'
 import Footer from './components/Footer.vue'
 import Main from './components/Main.vue'
+import Guide from './components/Guide.vue'
+import GeneralForm from './components/GeneralForm'
 
 export default {
   name: 'App',
@@ -19,7 +24,9 @@ export default {
     PostComponent,
     Navbar,
     Footer,
-    Main
+    Main,
+    Guide,
+    GeneralForm
   }
 }
 </script>
