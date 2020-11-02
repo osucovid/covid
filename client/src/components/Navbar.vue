@@ -10,6 +10,7 @@
         <b-nav-item href="#">Dashboard</b-nav-item>
         <b-nav-item href="#">Today's Assessment Data</b-nav-item>
         <b-nav-item href="#">About</b-nav-item>
+        <b-nav-item href="#">Reference Guide</b-nav-item>
       </b-navbar-nav>
 
       <!-- Right aligned nav items -->
